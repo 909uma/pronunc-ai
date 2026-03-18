@@ -35,12 +35,12 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 .vauthor{font-size:11px;color:var(--muted)}
 
 /* SETTINGS */
-.setbar{display:flex;align-items:center;gap:7px;padding:7px 11px;background:var(--bg2);border:1px solid rgba(255,255,255,0.07);border-radius:8px;margin-bottom:15px;font-size:12px}
+.setbar{display:flex;align-items:center;gap:7px;padding:7px 11px;background:var(--bg2);border:1px solid rgba(255,255,255,0.07);border-radius:8px;margin-bottom:15px;font-size:12px;flex-wrap:wrap}
 .slabel{color:var(--muted);white-space:nowrap}
-.sinput{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none}
+.sinput{flex:1;min-width:160px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none}
 .sinput:focus{border-color:var(--cyan)}
-.sbtn{background:rgba(0,201,255,0.1);border:1px solid rgba(0,201,255,0.3);border-radius:6px;padding:4px 10px;color:var(--cyan);font-size:12px;cursor:pointer;white-space:nowrap;outline:none}
-.sbtn:hover{background:rgba(0,201,255,0.18)}
+.sbtn{background:rgba(0,201,255,0.1);border:1px solid rgba(0,201,255,0.3);border-radius:6px;padding:5px 12px;color:var(--cyan);font-size:12px;cursor:pointer;white-space:nowrap;outline:none}
+.sbtn:hover{background:rgba(0,201,255,0.2)}
 
 /* STAGE TABS */
 .stabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
@@ -49,44 +49,32 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 .stab.on{background:rgba(0,201,255,0.1);border-color:var(--cyan);color:var(--cyan)}
 .stab:hover:not(.on){background:rgba(255,255,255,0.04)}
 
-/* ── THUMBNAIL PLAYER ── */
-.thumb-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--bg2);margin-bottom:0}
-.thumb-area{position:relative;padding-top:56.25%;cursor:pointer;background:#000;overflow:hidden}
-.thumb-area img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.2s}
-.thumb-area:hover img{opacity:0.8}
-.play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.play-btn-big{width:72px;height:72px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.18s,background 0.18s;pointer-events:none}
-.thumb-area:hover .play-btn-big{transform:scale(1.1);background:rgba(255,0,0,1)}
-.play-arrow{width:0;height:0;border-style:solid;border-width:14px 0 14px 26px;border-color:transparent transparent transparent #fff;margin-left:5px}
-.stage-badge{position:absolute;top:12px;left:12px;background:rgba(0,201,255,0.18);border:1px solid var(--border);border-radius:6px;padding:3px 10px;font-size:11px;color:var(--cyan);font-family:'Orbitron',monospace;letter-spacing:1px}
+/* PLAYER */
+.player-box{border-radius:var(--r) var(--r) 0 0;overflow:hidden;border:1px solid var(--border);border-bottom:none;position:relative;padding-top:56.25%;background:#000}
+#yt-player{position:absolute;top:0;left:0;width:100%;height:100%}
 
-/* Video action bar */
-.vaction{display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(13,21,38,0.94);border-top:1px solid var(--border)}
-.vopen-btn{display:flex;align-items:center;gap:7px;background:rgba(255,0,0,0.12);border:1px solid rgba(255,80,80,0.35);border-radius:8px;padding:7px 16px;color:#ff8080;font-size:13px;cursor:pointer;text-decoration:none;font-family:'Exo 2',sans-serif;transition:all 0.15s}
-.vopen-btn:hover{background:rgba(255,0,0,0.2)}
-.vaction-hint{flex:1;font-size:11px;color:var(--muted);line-height:1.5}
+/* STAGE LABEL OVERLAY */
+.stage-label{position:absolute;top:12px;left:12px;z-index:10;background:rgba(0,0,0,0.55);border:1px solid var(--border);border-radius:6px;padding:3px 10px;font-size:11px;color:var(--cyan);font-family:'Orbitron',monospace;letter-spacing:1px;pointer-events:none}
 
-/* Stage 1 hint */
-.s1hint{padding:12px 14px;background:rgba(0,201,255,0.04);border:1px solid rgba(0,201,255,0.1);border-radius:0 0 var(--r) var(--r);font-size:12px;color:var(--muted);line-height:1.7;border-top:none}
-
-/* ── STAGE 2 SYNC ── */
-.sync-panel{background:rgba(13,21,38,0.94);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);padding:14px;margin-bottom:8px}
-.sync-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.sync-btn{background:rgba(226,185,106,0.1);border:1px solid rgba(226,185,106,0.3);border-radius:8px;padding:8px 18px;color:var(--gold);font-size:13px;cursor:pointer;font-family:'Exo 2',sans-serif;transition:all 0.15s;outline:none}
-.sync-btn:hover{background:rgba(226,185,106,0.2)}
-.sync-stop{background:rgba(255,71,87,0.1);border-color:rgba(255,71,87,0.3);color:var(--red)}
-.sync-reset{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);color:var(--muted);padding:8px 12px}
-.sync-timer{font-family:'Orbitron',monospace;font-size:22px;font-weight:600;color:var(--cyan);min-width:80px}
-.sync-bar{width:100%;height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;margin-bottom:10px}
-.sync-progress{height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold));border-radius:3px;transition:width 0.1s linear;width:0%}
-.subbar{min-height:52px;display:flex;align-items:center;justify-content:center;padding:8px 16px;border-top:1px solid rgba(255,255,255,0.06)}
+/* SUBTITLE BAR */
+.subbar{background:rgba(13,21,38,0.97);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);padding:12px 22px;min-height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
 .sub-txt{font-family:'JetBrains Mono',monospace;font-size:16px;text-align:center;color:#fff;text-shadow:0 0 16px rgba(0,201,255,0.35);line-height:1.7}
-.sub-empty{color:var(--muted);font-size:13px;font-style:italic}
-.sync-hint{font-size:11px;color:var(--muted);line-height:1.6}
+.sub-empty{color:var(--muted);font-size:13px;font-style:italic;text-align:center}
 
-/* ── PRACTICE ── */
+/* HINTS */
+.hint-box{padding:11px 14px;background:rgba(0,201,255,0.04);border:1px solid rgba(0,201,255,0.1);border-radius:0 0 var(--r) var(--r);font-size:12px;color:var(--muted);line-height:1.7;border-top:none;margin-bottom:8px}
+
+/* STAGE 2 CONTROLS */
+.s2ctrl{display:flex;align-items:center;gap:8px;padding:9px 14px;background:rgba(13,21,38,0.94);border:1px solid var(--border);border-top:none}
+.s2btn{background:rgba(226,185,106,0.1);border:1px solid rgba(226,185,106,0.3);border-radius:7px;padding:6px 14px;color:var(--gold);font-size:12px;cursor:pointer;font-family:'Exo 2',sans-serif;transition:all 0.15s;outline:none}
+.s2btn:hover{background:rgba(226,185,106,0.2)}
+.s2btn.stop{background:rgba(255,71,87,0.1);border-color:rgba(255,71,87,0.3);color:var(--red)}
+.s2timer{font-family:'Orbitron',monospace;font-size:18px;font-weight:600;color:var(--cyan);min-width:58px}
+.s2info{flex:1;font-size:11px;color:var(--muted);line-height:1.5}
+
+/* PRACTICE */
 .prac-layout{display:flex;gap:13px}
-.sent-list{width:188px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:9px;max-height:600px;overflow-y:auto}
+.sent-list{width:190px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:9px;max-height:600px;overflow-y:auto}
 .slist-title{font-size:10px;color:var(--muted);letter-spacing:2px;padding:0 4px 7px}
 .sitem{padding:6px 8px;border-radius:8px;margin-bottom:3px;cursor:pointer;transition:all 0.15s;border:1px solid transparent;display:flex;align-items:center;justify-content:space-between;gap:4px}
 .sitem:hover{background:rgba(0,201,255,0.06)}
@@ -106,7 +94,7 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 .tcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px 16px 13px;margin-bottom:13px;position:relative}
 .tlabel{font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:8px}
 .ttext{font-family:'JetBrains Mono',monospace;font-size:17px;line-height:1.85;color:var(--text)}
-.ttext.lg{font-size:23px}
+.ttext.lg{font-size:22px}
 .lbtn{position:absolute;top:12px;right:12px;background:rgba(226,185,106,0.09);border:1px solid rgba(226,185,106,0.28);border-radius:7px;padding:4px 11px;color:var(--gold);font-size:11px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:4px;outline:none}
 .lbtn:hover{background:rgba(226,185,106,0.18)}
 .recarea{text-align:center;margin-bottom:13px}
@@ -119,9 +107,9 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 .ring-w{position:relative;width:66px;height:66px;flex-shrink:0}
 .ring-w svg{transform:rotate(-90deg)}
 .ring-c{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:16px;font-weight:600}
-.slabel2{font-size:15px;font-weight:600;margin-bottom:3px}
+.rlabel{font-size:15px;font-weight:600;margin-bottom:3px}
 .spoken{font-size:11px;color:var(--muted);font-family:'JetBrains Mono'}
-.sstats{font-size:11px;color:var(--muted);margin-top:2px}
+.rstats{font-size:11px;color:var(--muted);margin-top:2px}
 .wchips{display:flex;flex-wrap:wrap;gap:4px}
 .wc{padding:3px 8px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:12px;display:inline-flex;align-items:center;gap:2px}
 .wc.ok{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.24);color:var(--green)}
@@ -136,9 +124,7 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,71,87,0.35)}50%{transform:scale(1.06);box-shadow:0 0 0 7px rgba(255,71,87,0)}}
 @keyframes fin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 .fin{animation:fin 0.26s ease forwards}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
-.blinking{animation:blink 1s ease-in-out infinite}
-@media(max-width:600px){.prac-layout{flex-direction:column}.sent-list{width:100%;max-height:108px}.vtitle{font-size:13px}.setbar{flex-wrap:wrap}}
+@media(max-width:600px){.prac-layout{flex-direction:column}.sent-list{width:100%;max-height:110px}.vtitle{font-size:13px}}
 </style>
 </head>
 <body>
@@ -162,8 +148,8 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 <!-- VIDEO INFO -->
 <div class="vinfo">
   <div class="vtag">TED-Ed</div>
-  <div class="vtitle" id="display-title">What Would Happen If You Didn't Sleep?</div>
-  <div class="vauthor" id="display-author">Claudia Aguirre · TED-Ed</div>
+  <div class="vtitle">What Would Happen If You Didn't Sleep?</div>
+  <div class="vauthor">Claudia Aguirre · TED-Ed</div>
 </div>
 
 <!-- SETTINGS -->
@@ -180,61 +166,34 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
   <button class="stab" onclick="setStage(3)" id="tab-3"><span class="si">🎤</span>3단계<br><small>발음 연습</small></button>
 </div>
 
-<!-- ── STAGE 1 ── -->
-<div id="s1section">
-  <div class="thumb-card">
-    <div class="thumb-area" onclick="openYT()" id="thumb-area">
-      <img id="thumb-img" src="" alt="동영상 썸네일">
-      <div class="play-overlay">
-        <div class="play-btn-big"><div class="play-arrow"></div></div>
-      </div>
-      <div class="stage-badge">1단계 · 무자막</div>
-    </div>
-    <div class="vaction">
-      <a class="vopen-btn" id="yt-link" href="#" onclick="openYT();return false;">
-        ▶&nbsp; YouTube에서 영상 열기
-      </a>
-      <span class="vaction-hint">클릭하면 새 탭에서 YouTube가 열립니다</span>
-    </div>
+<!-- VIDEO SECTION (1·2단계 공용) -->
+<div id="vsection">
+  <div class="player-box">
+    <div class="stage-label" id="stage-label">1단계 · 무자막</div>
+    <div id="yt-player"></div>
   </div>
-  <div class="s1hint">
-    💡 <strong style="color:var(--text)">학습 방법:</strong> 위 버튼을 눌러 YouTube를 새 탭에서 열고, <strong style="color:var(--cyan)">자막 없이</strong> 영상 전체를 시청하세요. 모르는 단어가 나와도 멈추지 말고 전체 흐름을 파악하는 데 집중하세요.
+
+  <!-- 2단계 컨트롤 -->
+  <div class="s2ctrl" id="s2ctrl" style="display:none">
+    <button class="s2btn" id="s2play" onclick="syncStart()">▶ 싱크 시작</button>
+    <button class="s2btn stop" id="s2stop" onclick="syncStop()" style="display:none">■ 정지</button>
+    <button class="s2btn" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);color:var(--muted);padding:6px 10px" onclick="syncReset()">↺</button>
+    <div class="s2timer" id="s2timer">0:00</div>
+    <div class="s2info">YouTube 재생과 동시에 싱크 시작 버튼을 누르세요</div>
+  </div>
+
+  <!-- 자막 바 (2단계) -->
+  <div class="subbar" id="subbar" style="display:none">
+    <div id="sub-content" class="sub-empty">싱크 시작 후 자막이 표시됩니다</div>
+  </div>
+
+  <!-- 1단계 힌트 -->
+  <div class="hint-box" id="hint1">
+    💡 <strong style="color:var(--text)">1단계 학습법:</strong> 자막 없이 영상 전체를 시청하며 전체 흐름을 파악하세요. 2단계로 넘어가면 자막이 싱크됩니다.
   </div>
 </div>
 
-<!-- ── STAGE 2 ── -->
-<div id="s2section" style="display:none">
-  <div class="thumb-card">
-    <div class="thumb-area" onclick="openYT()" id="thumb-area2">
-      <img id="thumb-img2" src="" alt="동영상 썸네일">
-      <div class="play-overlay">
-        <div class="play-btn-big"><div class="play-arrow"></div></div>
-      </div>
-      <div class="stage-badge" style="background:rgba(226,185,106,0.18);border-color:rgba(226,185,106,0.4);color:var(--gold)">2단계 · 자막 싱크</div>
-    </div>
-    <div class="vaction">
-      <a class="vopen-btn" href="#" onclick="openYT();return false;">▶&nbsp; YouTube 새 탭으로 열기</a>
-      <span class="vaction-hint">영상을 열고 재생 시작과 동시에 아래 싱크 버튼을 누르세요</span>
-    </div>
-  </div>
-  <div class="sync-panel">
-    <div class="sync-row">
-      <button class="sync-btn" id="sync-start-btn" onclick="syncStart()">▶ 싱크 시작</button>
-      <button class="sync-btn sync-stop" id="sync-stop-btn" onclick="syncStop()" style="display:none">■ 정지</button>
-      <button class="sync-btn sync-reset" onclick="syncReset()">↺ 초기화</button>
-      <div class="sync-timer blinking" id="sync-timer" style="animation:none">0:00</div>
-    </div>
-    <div class="sync-bar"><div class="sync-progress" id="sync-progress"></div></div>
-    <div class="subbar">
-      <div id="sub-content" class="sub-empty">▶ 싱크 시작을 누른 후 자막이 여기에 표시됩니다</div>
-    </div>
-    <div class="sync-hint">
-      📌 <strong style="color:var(--text)">사용법:</strong> ① YouTube 새 탭 열기 → ② 영상 재생 클릭 → ③ 즉시 [싱크 시작] 버튼 클릭 → 자막이 자동으로 영상과 맞춰집니다
-    </div>
-  </div>
-</div>
-
-<!-- ── STAGE 3 ── -->
+<!-- PRACTICE SECTION (3단계) -->
 <div id="psection" style="display:none">
   <div class="prac-layout">
     <div class="sent-list">
@@ -255,7 +214,7 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
       </div>
       <div class="recarea">
         <button class="recbtn" id="recbtn" onclick="toggleRec()">🎤</button>
-        <div class="rechint" id="rechint">버튼을 클릭하여 발음 녹음 시작 (Chrome 권장)</div>
+        <div class="rechint" id="rechint">버튼을 클릭하여 발음 녹음 시작</div>
       </div>
       <div id="result-area"></div>
       <div class="navrow">
@@ -268,8 +227,12 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'E
 
 </div><!-- /app -->
 
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-// ═══ CONFIG — TRANSCRIPT를 Rily AI 스크립트로 교체하세요 ═══
+// ══════════════════════════════════════════
+// CONFIG — TRANSCRIPT를 Rily AI 스크립트로 교체하세요
+// ══════════════════════════════════════════
 let VID = 'dqONk48l5vY';
 
 const TRANSCRIPT = [
@@ -285,85 +248,116 @@ const TRANSCRIPT = [
   {id:9,start:77,end:85,text:"Each phase is important for memory consolidation and brain health.",chunks:["Each phase is important","for memory consolidation","and brain health."],words:["Each","phase","is","important","for","memory","consolidation","and","brain","health."]}
 ];
 
-// ═══ THUMBNAIL URLS ═══
-const thumbHQ  = id => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-const thumbMQ  = id => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-const ytURL    = id => `https://www.youtube.com/watch?v=${id}`;
-
-function setThumbSrc(imgEl, id) {
-  const hq = thumbHQ(id);
-  const mq = thumbMQ(id);
-  imgEl.src = hq;
-  imgEl.onerror = () => { imgEl.src = mq; imgEl.onerror = null; };
-}
-
-function refreshThumbs() {
-  setThumbSrc(document.getElementById('thumb-img'),  VID);
-  setThumbSrc(document.getElementById('thumb-img2'), VID);
-}
-
-function openYT() {
-  window.open(ytURL(VID), '_blank');
-}
-
-// ═══ STATE ═══
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
 let curStage=1, sentIdx=0, mode='word', subIdx=0;
 let isRec=false, recog=null;
-let syncIv=null, syncStartTime=null;
-let totalDuration=0;
+let ytPlayer=null, ytReady=false;
+let subIv=null;
+let syncIv=null, syncStart0=null;
 let scoreHistory={};
 
-// ═══ STAGE ═══
-function setStage(n) {
+// ══════════════════════════════════════════
+// YOUTUBE IFRAME API
+// ══════════════════════════════════════════
+function onYouTubeIframeAPIReady(){
+  ytPlayer = new YT.Player('yt-player',{
+    videoId: VID,
+    playerVars:{
+      rel:0,
+      cc_load_policy:0,   // 1단계: CC 자막 off
+      iv_load_policy:3,
+      modestbranding:1,
+      fs:1
+    },
+    events:{
+      onReady: ()=>{ ytReady=true; },
+      onStateChange: onPlayerState
+    }
+  });
+}
+
+function onPlayerState(e){
+  // 2단계에서 재생 시작되면 자막 싱크 자동 시작 옵션
+  // (수동 싱크 버튼과 병행)
+}
+
+function reloadPlayer(vid){
+  if(ytPlayer && ytReady){
+    ytPlayer.loadVideoById(vid);
+    ytPlayer.stopVideo();
+  }
+}
+
+// ══════════════════════════════════════════
+// STAGE CONTROL
+// ══════════════════════════════════════════
+function setStage(n){
   curStage=n;
   [1,2,3].forEach(i=>document.getElementById('tab-'+i).classList.toggle('on',i===n));
-  document.getElementById('s1section').style.display=n===1?'':'none';
-  document.getElementById('s2section').style.display=n===2?'':'none';
-  document.getElementById('psection').style.display=n===3?'':'none';
+  clearInterval(subIv); subIv=null;
+  syncStop();
+
+  document.getElementById('vsection').style.display  = n<=2?'':'none';
+  document.getElementById('psection').style.display  = n===3?'':'none';
+  document.getElementById('hint1').style.display     = n===1?'':'none';
+  document.getElementById('s2ctrl').style.display    = n===2?'':'none';
+  document.getElementById('subbar').style.display    = n===2?'':'none';
+
+  const lbl = document.getElementById('stage-label');
+  if(n===1){ lbl.textContent='1단계 · 무자막'; lbl.style.color='var(--cyan)'; }
+  else if(n===2){ lbl.textContent='2단계 · 자막 싱크'; lbl.style.color='var(--gold)'; }
+
   if(n===2) syncReset();
   if(n===3){ renderSentList(); renderPractice(); }
 }
 
-// ═══ SYNC TIMER ═══
+// ══════════════════════════════════════════
+// STAGE 2 — 수동 싱크 타이머 (IFrame API seekTo 병행)
+// ══════════════════════════════════════════
 function syncStart(){
-  syncStartTime=Date.now();
-  totalDuration=TRANSCRIPT[TRANSCRIPT.length-1].end+5;
-  document.getElementById('sync-start-btn').style.display='none';
-  document.getElementById('sync-stop-btn').style.display='';
-  document.getElementById('sync-timer').style.animation='blink 1s ease-in-out infinite';
-  syncIv=setInterval(tick,80);
-}
+  syncStart0 = Date.now();
+  // YT 플레이어도 처음부터 재생 (이미 재생 중이면 그대로)
+  if(ytReady && ytPlayer){
+    try{ ytPlayer.seekTo(0); ytPlayer.playVideo(); }catch(e){}
+  }
+  document.getElementById('s2play').style.display='none';
+  document.getElementById('s2stop').style.display='';
 
-function tick(){
-  if(!syncStartTime)return;
-  const elapsed=(Date.now()-syncStartTime)/1000;
-  const m=Math.floor(elapsed/60), s=String(Math.floor(elapsed%60)).padStart(2,'0');
-  document.getElementById('sync-timer').textContent=m+':'+s;
-  const pct=Math.min((elapsed/totalDuration)*100,100);
-  document.getElementById('sync-progress').style.width=pct+'%';
-  const sub=TRANSCRIPT.find(t=>elapsed>=t.start&&elapsed<t.end);
-  const el=document.getElementById('sub-content');
-  if(sub){ el.className='sub-txt'; el.textContent=sub.text; }
-  else{ el.className='sub-empty'; el.textContent='자막 대기 중...'; }
+  syncIv = setInterval(()=>{
+    const elapsed=(Date.now()-syncStart0)/1000;
+    const m=Math.floor(elapsed/60), s=String(Math.floor(elapsed%60)).padStart(2,'0');
+    document.getElementById('s2timer').textContent=m+':'+s;
+    const sub=TRANSCRIPT.find(t=>elapsed>=t.start&&elapsed<t.end);
+    const el=document.getElementById('sub-content');
+    if(sub){el.className='sub-txt';el.textContent=sub.text;}
+    else{el.className='sub-empty';el.textContent='자막 대기 중...';}
+  },100);
 }
 
 function syncStop(){
   clearInterval(syncIv); syncIv=null;
-  document.getElementById('sync-start-btn').style.display='';
-  document.getElementById('sync-stop-btn').style.display='none';
-  document.getElementById('sync-timer').style.animation='none';
+  const sp=document.getElementById('s2play');
+  const ss=document.getElementById('s2stop');
+  if(sp) sp.style.display='';
+  if(ss) ss.style.display='none';
+  if(ytReady&&ytPlayer){ try{ytPlayer.pauseVideo();}catch(e){} }
 }
 
 function syncReset(){
   syncStop();
-  syncStartTime=null;
-  document.getElementById('sync-timer').textContent='0:00';
-  document.getElementById('sync-progress').style.width='0%';
-  document.getElementById('sub-content').className='sub-empty';
-  document.getElementById('sub-content').textContent='▶ 싱크 시작을 누른 후 자막이 여기에 표시됩니다';
+  syncStart0=null;
+  const st=document.getElementById('s2timer');
+  const sc=document.getElementById('sub-content');
+  if(st) st.textContent='0:00';
+  if(sc){sc.className='sub-empty';sc.textContent='싱크 시작 후 자막이 표시됩니다';}
+  if(ytReady&&ytPlayer){ try{ytPlayer.seekTo(0);ytPlayer.stopVideo();}catch(e){} }
 }
 
-// ═══ PRACTICE ═══
+// ══════════════════════════════════════════
+// PRACTICE
+// ══════════════════════════════════════════
 const norm=t=>t.toLowerCase().replace(/[^a-z\s]/g,'').split(/\s+/).filter(Boolean);
 const calcScore=(sp,tg)=>{
   const sw=norm(sp),tw=norm(tg);if(!tw.length)return 0;
@@ -398,7 +392,7 @@ function renderPractice(){
     ?`<div class="chips">${items.map((it,i)=>`<button class="chip ${i===subIdx?'on':''}" onclick="setSubIdx(${i})">${it}</button>`).join('')}</div>`:'';
   const tgt=getTarget();
   const td=document.getElementById('target-display');
-  td.textContent=tgt; td.className='ttext'+(mode==='word'?' lg':'');
+  td.textContent=tgt;td.className='ttext'+(mode==='word'?' lg':'');
   document.getElementById('result-area').innerHTML='';
   document.getElementById('prev-btn').disabled=sentIdx===0;
   document.getElementById('next-btn').disabled=sentIdx===TRANSCRIPT.length-1;
@@ -413,11 +407,13 @@ function listenTTS(){
   if(!window.speechSynthesis)return;
   speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(getTarget());
-  u.lang='en-US';u.rate=0.88;u.pitch=1.0;
+  u.lang='en-US';u.rate=0.85;u.pitch=1.0;
   speechSynthesis.speak(u);
 }
 
-// ═══ SPEECH RECOGNITION ═══
+// ══════════════════════════════════════════
+// SPEECH RECOGNITION
+// ══════════════════════════════════════════
 function toggleRec(){
   if(isRec){recog&&recog.stop();return;}
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
@@ -433,7 +429,7 @@ function setRecBtn(on){
   isRec=on;
   const b=document.getElementById('recbtn');
   b.classList.toggle('rec',on);b.textContent=on?'⏹':'🎤';
-  document.getElementById('rechint').textContent=on?'🔴 녹음 중... 클릭하여 중지':'버튼을 클릭하여 발음 녹음 시작 (Chrome 권장)';
+  document.getElementById('rechint').textContent=on?'🔴 녹음 중... 클릭하여 중지':'버튼을 클릭하여 발음 녹음 시작';
 }
 function handleResult(spoken,conf,target){
   const s=calcScore(spoken,target),wr=getWR(spoken,target);
@@ -455,9 +451,9 @@ function renderResult(spoken,score,wr,conf){
           <div class="ring-c" style="color:${c}">${score}</div>
         </div>
         <div>
-          <div class="slabel2" style="color:${c}">${sEmoji(score)}</div>
+          <div class="rlabel" style="color:${c}">${sEmoji(score)}</div>
           <div class="spoken">인식: "${spoken}"</div>
-          <div class="sstats">최고 <strong style="color:${c}">${best}점</strong> · ${hist.length}회 시도${conf?` · 신뢰도 ${Math.round(conf*100)}%`:''}</div>
+          <div class="rstats">최고 <strong style="color:${c}">${best}점</strong> · ${hist.length}회 시도${conf?` · 신뢰도 ${Math.round(conf*100)}%`:''}</div>
         </div>
       </div>
       <div class="wchips">${wr.map(w=>`<span class="wc ${w.ok?'ok':'ng'}">${w.ok?'✓':'✗'} ${w.word}</span>`).join('')}</div>
@@ -471,18 +467,15 @@ function updateOverall(){
   const v=document.getElementById('oscore-val');v.textContent=avg;v.style.color=sColor(avg);
 }
 
-// ═══ CHANGE VIDEO ═══
 function changeVideo(){
   const id=document.getElementById('vid-input').value.trim();if(!id)return;
-  VID=id;
-  scoreHistory={};updateOverall();
-  refreshThumbs();
-  if(curStage===3){renderSentList();}
-  if(curStage===2){syncReset();}
+  VID=id;scoreHistory={};updateOverall();
+  if(curStage===3){renderSentList();return;}
+  reloadPlayer(VID);
+  syncReset();
 }
 
-// ═══ INIT ═══
-refreshThumbs();
+// INIT
 setStage(1);
 </script>
 </body>
